@@ -17,7 +17,7 @@ The home page shows a random picture of a cat (based on your profile preferences
 In the like and dislike overviews you can see an overview of the pictures of cats you liked or disliked. The liked and disliked cat lists are stored in the browser cache.
 
 ## Profile
-The profile page can be used to configure your preferences. These prefrences will be used in the home screen to find the best matches. The profile is stored in cache of the browser.
+The profile page can be used to configure your preferences. These prefrences will be used in the home screen to find the best matches. Make sure that you enter your name, because it's a required field. The profile is stored in cache of the browser.
 
 ## Up-to-date data
 The application is getting all the cat data from the server (theCatAPI) to ensure that we always have up-to-date data.
