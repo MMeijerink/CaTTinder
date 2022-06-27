@@ -4,7 +4,7 @@ import { PersistGate } from 'redux-persist/integration/react'
 import { Provider } from 'react-redux';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import {store} from './app/state/store'
+import {store} from './state/store'
 import './index.css';
 import { persistStore } from 'redux-persist';
 

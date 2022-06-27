@@ -1,28 +1,26 @@
 import React from "react";
-import {ToolbarContainer, ButtonGroup} from './toolbarStyle'
+import "./Toolbar.css";
 import { useNavigate } from "react-router-dom";
-
-
 
 const Toolbar: React.FC<{}> = props => {
   let navigate = useNavigate();
   return (
-    <ToolbarContainer>
-      <ButtonGroup>
+    <div className="toolbar-container">
+      <div className="button-group">
         <button  
           onClick={() => { navigate('/profile') }}
         >
           Profile
         </button>
-      </ButtonGroup>
-      <ButtonGroup className="title">
+      </div>
+      <div className="button-group title">
         <button  
           onClick={() => { navigate('/') }}
         >
           CaTTinder
         </button>
-      </ButtonGroup>
-      <ButtonGroup>
+      </div>
+      <div className="button-group title">
         <button  
           onClick={() => { navigate('/dislikedCats') }}
         >
@@ -33,9 +31,9 @@ const Toolbar: React.FC<{}> = props => {
         >
           &#128571;
         </button>
-      </ButtonGroup>
+      </div>
 
-    </ToolbarContainer>
+    </div>
   );
 };
 

@@ -1,22 +1,22 @@
 import React, {useEffect, useState} from "react";
-import {SwipeContainer, ImageContainer, ImageFrame} from "./homeStyle"
-import { useAppSelector, useAppDispatch } from '../../app/state/hooks'
-import { fetchCatData, selectCat } from '../../app/state/cat/CatSlice'
-import { rateCat } from '../../app/state/ratedCats/RatedCats'
+import { useAppSelector, useAppDispatch } from '../../state/hooks'
+import { fetchCatData, selectCat } from '../../state/cat/CatSlice'
+import { rateCat } from '../../state/ratedCats/RatedCatsSlice'
 import { RateType } from "../../interfaces/RateType";
 import { getBreedsDictionary } from "../../helpers/breedsHelper";
-
-// import { ApplicationState } from "../../store";
-// import { Cart } from "../../store/cart/types";
+import "./Home.css";
+import { selectProfile } from "../../state/profile/ProfileSlice";
 
 const Home: React.FC<{}> = props => {
   const cat = useAppSelector(selectCat)
+  const profile = useAppSelector(selectProfile)
+  const {preferedBreedId, preferedCategoryId} = profile;
   const dispatch = useAppDispatch()
   const [breedsDictionary, setBreedsDictionary] = useState(Object);
 
   useEffect(() => {
     if(!cat.id){
-      dispatch(fetchCatData());
+      dispatch(fetchCatData({preferedBreedId, preferedCategoryId}));
     }
   }, [dispatch]);
 
@@ -29,42 +29,43 @@ const Home: React.FC<{}> = props => {
     fetchBreedsDictionary().catch(console.error);
   }, []);
 
-  
   const {id = "", url, categories = [], breed_ids = []} = cat
   const categoryNames = categories.map( category => category.name);
   const breedNames = breed_ids.map( id => breedsDictionary[id]);
 
   return (
-    <SwipeContainer>
-       <ImageContainer>
+    <div className="swipe-container">
+       <div className="image-container">
           <button 
             className="dislike-button"
             onClick={() => {
                dispatch(rateCat({id, rate: RateType.Dislike}));
-               dispatch(fetchCatData());
+               dispatch(fetchCatData({preferedBreedId, preferedCategoryId}));
                }}
             >
           &#128574;
           </button>
-          <ImageFrame>
+          <div className="image-frame">
             <img src={url}/>
-            <span>{
-            `id: ${id}
-            ${breedNames.length ? `, breeds: ${breedNames}` : ''}
-            ${categoryNames.length ? `, categories: ${categoryNames}` : ''}`
-            }</span>
-          </ImageFrame>
+            <span>
+              {
+                `id: ${id}
+                ${breedNames.length ? `, breeds: ${breedNames}` : ''}
+                ${categoryNames.length ? `, categories: ${categoryNames}` : ''}`
+              }
+            </span>
+          </div>
           <button 
             className="like-button" 
             onClick={() => {
               dispatch(rateCat({id, rate: RateType.Like}));
-              dispatch(fetchCatData());
+              dispatch(fetchCatData({preferedBreedId, preferedCategoryId}));
             }}
           >
           &#128571;
           </button>
-        </ImageContainer>
-    </SwipeContainer>
+        </div>
+    </div>
   );
 };
 export default Home;

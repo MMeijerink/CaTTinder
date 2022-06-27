@@ -5,7 +5,7 @@ export default {
              .map(([key, val]) => `${key}=${encodeURIComponent(val)}`)
              .join('&')
 
-             return `https://api.thecatapi.com/v1/images/search?${encodeURIComponent(encodedParameters)}`;
+             return `https://api.thecatapi.com/v1/images/search?${encodedParameters}`;
         }
         return "https://api.thecatapi.com/v1/images/search";
     },

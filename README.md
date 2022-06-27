@@ -1,10 +1,28 @@
-# Getting Started with Create React App
+# CaTTinder
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app), using the [Redux](https://redux.js.org/) and [Redux Toolkit](https://redux-toolkit.js.org/) TS template.
+Find cats you like using the CaTTinder application.
+
+Like and Dislike cats in the home page.
+Check out your liked and disliked cats in the overview pages. 
+Configure your preferences in the profile page.
+
+## TechStack
+TypeScript, React, Redux and CSS are used for the base of the application.
+In addition to that also redux-persist is used to store the liked/disliked cats and the profile configuration in the browser cache. The routing is done using react-router-dom. Axios is used as http-client. 
+
+## Home
+The home page shows a random picture of a cat (based on your profile preferences). You can like the cat by clicking on the right button and you can dislike the cat by clicking on the left button. 
+
+## Like / Dislike overview
+In the like and dislike overviews you can see an overview of the pictures of cats you liked or disliked. The liked and disliked cat lists are stored in the browser cache.
+
+## Profile
+The profile page can be used to configure your preferences. These prefrences will be used in the home screen to find the best matches. The profile is stored in cache of the browser.
+
+## Up-to-date data
+The application is getting all the cat data from the server (theCatAPI) to ensure that we always have up-to-date data.
 
 ## Available Scripts
-
-In the project directory, you can run:
 
 ### `npm start`
 
@@ -13,34 +31,3 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
 The page will reload if you make edits.\
 You will also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).

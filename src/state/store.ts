@@ -1,20 +1,20 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit'
 import { persistReducer } from 'redux-persist'
 import storage from 'redux-persist/lib/storage'
-
-
 import CatReducer from "./cat/CatSlice";
-import RatedCatsReducer from "./ratedCats/RatedCats";
+import RatedCatsReducer from "./ratedCats/RatedCatsSlice";
+import ProfileReducer from "./profile/ProfileSlice";
 
 const persistConfig = {
     key: 'root',
     storage,
-    whitelist: ['ratedCats'] 
+    whitelist: ['ratedCats', 'profile'] 
 };
 
 const reducers = combineReducers({
     cat: CatReducer,
     ratedCats: RatedCatsReducer,
+    profile: ProfileReducer,
   })
 
 const persistedReducer = persistReducer(persistConfig, reducers);
