@@ -6,6 +6,9 @@ import Profile from "../features/profile/ProfileConfiguration";
 import Overview from "../features/overview/Overview";
 import MainScreen from "../features/mainScreen/MainScreen";
 
+/**
+ * The component that contains the routes in the application
+*/
 const ApplicationRoutes: React.FC = () => (
   <Routes>
     <Route path="/" element={(<MainScreen><Home/></MainScreen>)}/>

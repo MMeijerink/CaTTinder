@@ -7,6 +7,9 @@ import "./ProfileConfiguration.css"
 import { Category } from "../../interfaces/Category.interface";
 import { Breed } from "../../interfaces/Breed.interface";
 
+/**
+ * The profile configuration screen component
+*/
 const ProfileConfiguration: React.FC<{}> = props => {
   const dispatch = useAppDispatch();
   const stateProfile = useAppSelector(selectProfile)
@@ -15,6 +18,9 @@ const ProfileConfiguration: React.FC<{}> = props => {
   const [breeds, setBreeds] = useState<Array<Breed>>([]);
   const [nameError, setNameError] = useState<String>("");
   
+  /**
+   * Fetch the up-to-date data for the categories and breeds from the server
+  */
   useEffect(() => {
     const _fetchCategories = async () => {
         const response = await getCategories();
@@ -30,6 +36,9 @@ const ProfileConfiguration: React.FC<{}> = props => {
   }, []);
 
 
+  /**
+   * Submit the profile and validate if the name is set.
+  */
   const submitProfile = () => {
     if((profile.name === "")){
       setNameError("Name is required")
@@ -39,6 +48,10 @@ const ProfileConfiguration: React.FC<{}> = props => {
     dispatch(saveProfile(profile))
   }
  
+  /**
+   * Renders the profile screen containing the form
+   * @returns The DOM nodes for profile screen
+   */
   return (
     <div className="profile-container">
       <h3>Personal:</h3>

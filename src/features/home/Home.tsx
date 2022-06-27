@@ -7,6 +7,9 @@ import { getBreedsDictionary } from "../../helpers/breedsHelper";
 import "./Home.css";
 import { selectProfile } from "../../state/profile/ProfileSlice";
 
+/**
+ * The home screen component
+*/
 const Home: React.FC<{}> = props => {
   const cat = useAppSelector(selectCat)
   const profile = useAppSelector(selectProfile)
@@ -14,12 +17,18 @@ const Home: React.FC<{}> = props => {
   const dispatch = useAppDispatch()
   const [breedsDictionary, setBreedsDictionary] = useState(Object);
 
+  /**
+   * Fetch a new cat picture using the preferences, when we don't have one.
+  */
   useEffect(() => {
     if(!cat.id){
       dispatch(fetchCatData({preferedBreedId, preferedCategoryId}));
     }
   }, [dispatch]);
 
+  /**
+   * Fetch a dicitonary object for all cat breeds
+  */
   useEffect(() => {
     const fetchBreedsDictionary = async() => {
       const breedsDictionary = await getBreedsDictionary();
@@ -33,6 +42,10 @@ const Home: React.FC<{}> = props => {
   const categoryNames = categories.map( category => category.name);
   const breedNames = breed_ids.map( id => breedsDictionary[id]);
 
+  /**
+   * Renders the home page contining the cat picture and the like and dislike buttons.
+   * @returns The DOM nodes for the home screen 
+  */
   return (
     <div className="swipe-container">
        <div className="image-container">

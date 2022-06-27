@@ -5,20 +5,32 @@ import CatReducer from "./cat/CatSlice";
 import RatedCatsReducer from "./ratedCats/RatedCatsSlice";
 import ProfileReducer from "./profile/ProfileSlice";
 
+/**
+ * Redux persist configuration
+*/
 const persistConfig = {
     key: 'root',
     storage,
     whitelist: ['ratedCats', 'profile'] 
 };
 
+/**
+ * Combine the reducers
+*/
 const reducers = combineReducers({
     cat: CatReducer,
     ratedCats: RatedCatsReducer,
     profile: ProfileReducer,
   })
 
+/**
+ * Combine reducers and configure redux persist
+*/
 const persistedReducer = persistReducer(persistConfig, reducers);
 
+/**
+ * Configure the redux store
+*/
 export const store = configureStore({
     reducer: persistedReducer,
   })

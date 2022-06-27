@@ -2,8 +2,15 @@ import React from "react";
 import "./Toolbar.css";
 import { useNavigate } from "react-router-dom";
 
+/**
+ * The toolbar component
+*/
 const Toolbar: React.FC<{}> = props => {
   let navigate = useNavigate();
+  /**
+   * Renders the toolbar including the buttons
+   * @returns The DOM nodes for the toolbar
+   */
   return (
     <div className="toolbar-container">
       <div className="button-group">

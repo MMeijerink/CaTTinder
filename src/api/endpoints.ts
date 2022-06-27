@@ -1,3 +1,7 @@
+/**
+ * Object containing all endpoint urls used in the application
+ * @returns {object} - Dictionary containing all endpoint urls
+*/
 export default {
     getRandomCat: (searchParameters?: object) : string => {
         if(searchParameters){
